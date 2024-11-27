@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imagens</title>
+    <title>Imagens em Tela Cheia</title>
     <style>
         * {
             margin: 0;
@@ -16,12 +16,12 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #000; /* Fundo preto, caso queira */
+            overflow: hidden;
         }
         img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
         }
     </style>
 </head>
