@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imagens em Tela Cheia</title>
+    <title>Imagens no Tamanho Original</title>
     <style>
         * {
             margin: 0;
@@ -13,15 +13,15 @@
         body {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start;
+            justify-content: flex-start;
             height: 100vh;
             overflow: hidden;
         }
         img {
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
+            display: block;
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
