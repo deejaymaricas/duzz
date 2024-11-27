@@ -2,9 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>PDF Viewer</title>
-    <!-- Carregue o PDF.js a partir de um CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <title>Design Canva</title>
     <style>
         #viewer {
             width: 100%;
@@ -17,33 +15,15 @@
     </style>
 </head>
 <body>
-    <div id="viewer">Carregando PDF...</div>
-    <script>
-        const url = 'https://drive.google.com/file/d/1EPHn28tp9SMyvoB-ygsK7zU7oUOD9gl6/preview'; // Link para visualização
-        const viewerDiv = document.getElementById('viewer');
-
-        const loadingTask = pdfjsLib.getDocument(url);
-        loadingTask.promise.then(function(pdf) {
-            // Renderizar a primeira página do PDF
-            pdf.getPage(1).then(function(page) {
-                const viewport = page.getViewport({ scale: 1.5 }); // Ajuste o zoom
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
-                viewerDiv.innerHTML = ''; // Limpar o texto "Carregando PDF..."
-                viewerDiv.appendChild(canvas);
-
-                const renderContext = {
-                    canvasContext: context,
-                    viewport: viewport
-                };
-                page.render(renderContext);
-            });
-        }).catch(function(error) {
-            console.error('Erro ao carregar o PDF:', error);
-            viewerDiv.innerHTML = 'Falha ao carregar o PDF. Verifique o link.';
-        });
-    </script>
+    <div style="position: relative; width: 100%; height: 0; padding-top: 56.2225%;
+        padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+        border-radius: 8px; will-change: transform;">
+        <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+            src="https://www.canva.com/design/DAGUiR0slPs/KyKlh7JDbwbHXUfmH0we8w/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+        </iframe>
+    </div>
+    <a href="https://www.canva.com/design/DAGUiR0slPs/KyKlh7JDbwbHXUfmH0we8w/view?utm_content=DAGUiR0slPs&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank" rel="noopener">
+        Duzz Digital de Mahri Moura
+    </a>
 </body>
 </html>
