@@ -3,29 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>PDF Viewer</title>
-    <script src="pdf.js"></script>
+    <!-- Carregue o PDF.js a partir de um CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <style>
         #viewer {
             width: 100%;
             height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
         }
     </style>
 </head>
 <body>
-    <div id="viewer"></div>
+    <div id="viewer">Carregando PDF...</div>
     <script>
-        const url = 'seu-arquivo.pdf'; // Substitua pelo link do PDF
+        const url = 'https://drive.google.com/uc?id=1EPHn28tp9SMyvoB-ygsK7zU7oUOD9gl6&export=download';
+        const viewerDiv = document.getElementById('viewer');
+
         const loadingTask = pdfjsLib.getDocument(url);
         loadingTask.promise.then(function(pdf) {
+            // Renderizar a primeira página do PDF
             pdf.getPage(1).then(function(page) {
-                const viewport = page.getViewport({ scale: 1 });
+                const viewport = page.getViewport({ scale: 1.5 }); // Ajuste o zoom
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
-                document.getElementById('viewer').appendChild(canvas);
-                page.render({ canvasContext: context, viewport: viewport });
+                viewerDiv.innerHTML = ''; // Limpar o texto "Carregando PDF..."
+                viewerDiv.appendChild(canvas);
+
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+                page.render(renderContext);
             });
+        }).catch(function(error) {
+            console.error('Erro ao carregar o PDF:', error);
+            viewerDiv.innerHTML = 'Falha ao carregar o PDF. Verifique o link.';
         });
     </script>
 </body>
